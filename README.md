@@ -1,6 +1,7 @@
 
 # Booking Home
 > 
+![ERD](https://user-images.githubusercontent.com/39459774/165515738-8936af27-ca45-476e-be02-8575542d5b75.png)
 
 ## Built With
 
