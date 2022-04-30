@@ -14,7 +14,7 @@
 ## Live Demo
 
 # Getting Started
-## Prerequisites:
+## Prerequisites
 
 
 - Create an account on github
