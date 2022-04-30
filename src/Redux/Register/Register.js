@@ -12,7 +12,7 @@ export const SIGNUP_FAILURE = 'BOOKING_HOME/SIGNUP_FAILURE';
 export const signUserUp = (user) => async (dispatch) => {
   try {
     await fetchData
-      .post('sessions', user, { withCredentials: true })
+      .post('registrations', user, { withCredentials: true })
       .then((response) => dispatch({ type: SIGNUP_SUCCESS, data: response.data }));
   } catch (error) {
     dispatch({ type: SIGNUP_FAILURE, error });
