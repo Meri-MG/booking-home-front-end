@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logUserIn } from '../Redux/Login/Login';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const status = useSelector((state) => state.LogIn.status);
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
@@ -18,6 +19,7 @@ const LoginForm = () => {
       <form onSubmit={handleOnSubmit} className="bg-white">
         <h1 className="text-gray-800 font-bold text-2xl mb-1">Hello Again!</h1>
         <p className="text-sm font-normal text-gray-600 mb-7">Welcome Back</p>
+        {status === 401 && (<p className="text-lg text-red-500 font-bold break-words p-4 max-w-fit">Invalid email or Password please check your information and try again</p>)}
         <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
