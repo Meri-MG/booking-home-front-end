@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 import user from '../Assets/user.png';
 import { signUserUp } from '../Redux/Register/Register';
 
 const SignupFrom = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  const { errors, status } = useSelector((state) => state.Register);
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
@@ -24,10 +27,23 @@ const SignupFrom = () => {
   return (
     <div className="flex w-1/2 justify-center items-center bg-white">
       <form onSubmit={handleOnSubmit} className="bg-white">
+        {status === 'created' && navigate('/welcome')}
         <h1 className="text-gray-800 font-bold text-2xl mb-1">Hello There</h1>
         <p className="text-sm font-normal text-gray-600 mb-7">
           Let&#39;s create an account for you !
         </p>
+        {errors && (
+          <ul>
+            {errors.map((error) => (
+              <li
+                key={error}
+                className="text-lg text-red-500 font-bold break-words p-2 max-w-fit"
+              >
+                {error}
+              </li>
+            ))}
+          </ul>
+        )}
         <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
           <img className="h-4 w-4 text-gray-400" src={user} alt="user" />
           <input
