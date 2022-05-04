@@ -1,9 +1,11 @@
 import fetchData from '../../api/api';
+import { isLoggedIn } from '../Login/Login';
 
 const initialState = {
   IsLogged_in: false,
   user: {},
   errors: null,
+  status: '',
 };
 
 export const SIGNUP_SUCCESS = 'BOOKING_HOME/SIGNUP_SUCCESS';
@@ -14,6 +16,7 @@ export const signUserUp = (user) => async (dispatch) => {
     await fetchData
       .post('registrations', user, { withCredentials: true })
       .then((response) => dispatch({ type: SIGNUP_SUCCESS, data: response.data }));
+    dispatch(isLoggedIn());
   } catch (error) {
     dispatch({ type: SIGNUP_FAILURE, error });
   }
@@ -25,7 +28,8 @@ const registerReducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.data.user,
-        IsLogged_in: action.data.logged_in,
+        errors: action.data?.errors,
+        status: action.data.status,
       };
     case SIGNUP_FAILURE:
       return { ...state, errors: action.error };
