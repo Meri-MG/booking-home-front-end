@@ -38,12 +38,14 @@ const CreateApartment = () => {
       </header>
       <div>
         <form onSubmit={(e) => onSubmit(e)}>
-          <input type="text"  id="name" placeholder="Enter Name" name="name" onChange={(e) => handleChange(e)} style={divStyle} />
-          <textarea rows="4" cols="50" type="text" className="form-control m-1" id="description" placeholder="Enter Description" name="description" onChange={(e) => handleChange(e)} style={divStyle} />
-          <input type="text" id="image" placeholder="Enter Image Url" name="image" onChange={(e) => handleChange(e)} style={divStyle} />
-          <input type="text" id="city" placeholder="Enter City" name="city" onChange={(e) => handleChange(e)} style={divStyle} />
-          <input type="number" id="capacity" placeholder="Enter capacity" name="capacity" onChange={(e) => handleChange(e)} style={divStyle} />
-          <input type="number" id="price" placeholder="Enter Price" name="price" onChange={(e) => handleChange(e)} style={divStyle} />
+          <input type="text"  id="name" placeholder="Enter Name" name="name" onChange={(e) => handleChange(e)}  />
+          <textarea rows="4" cols="50" type="text" id="description" placeholder="Enter Description" name="description" onChange={(e) => handleChange(e)}  />
+          <input type="text" id="image" placeholder="Enter First Image Url" name="image" onChange={(e) => handleChange(e)}  />
+          <input type="text" id="image" placeholder="Enter Second Image Url" name="image" onChange={(e) => handleChange(e)}  />
+          <input type="text" id="image" placeholder="Enter Third Image Url" name="image" onChange={(e) => handleChange(e)}  />
+          <input type="text" id="city" placeholder="Enter City" name="city" onChange={(e) => handleChange(e)}  />
+          <input type="number" id="capacity" placeholder="Enter capacity" name="capacity" onChange={(e) => handleChange(e)}  />
+          <input type="number" id="price" placeholder="Enter Price" name="price" onChange={(e) => handleChange(e)}  />
           <div>
             <button type="submit" >Submit</button>
           </div>
