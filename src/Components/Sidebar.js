@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { logUserOut } from '../Redux/Login/Login';
 import logo from '../Assets/logo.jpeg';
@@ -8,8 +9,10 @@ import logo from '../Assets/logo.jpeg';
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const dispatch = useDispatch();
+  const navigateTo = useNavigate();
   const signUserOut = () => {
-    dispatch(logUserOut());
+    dispatch(logUserOut()).then(() => navigateTo('/Login'));
+    setShowSidebar(!showSidebar);
   };
   return (
     <>
@@ -41,11 +44,17 @@ const Sidebar = () => {
             <div className="container flex flex-wrap justify-between items-center mx-auto">
               <div className="px-6 pt-8 pb-4">
                 <Link to="/">
-                  <img
-                    src={logo}
-                    alt="logo"
-                    className="w-60 h-15 rounded-full"
-                  />
+                  <button
+                    className="uppercase"
+                    type="button"
+                    onClick={() => setShowSidebar(!showSidebar)}
+                  >
+                    <img
+                      src={logo}
+                      alt="logo"
+                      className="w-60 h-15 rounded-full"
+                    />
+                  </button>
                 </Link>
               </div>
               <div>
@@ -55,7 +64,13 @@ const Sidebar = () => {
                       className="block py-2 px-6 text-md text-[#555555]-700 hover:bg-[#96bf01] hover:text-[#fdfcf7] hover:rounded-md uppercase border-b-4"
                       to="/apartments"
                     >
-                      Apartments
+                      <button
+                        className="uppercase"
+                        type="button"
+                        onClick={() => setShowSidebar(!showSidebar)}
+                      >
+                        Apartments
+                      </button>
                     </Link>
                   </li>
                   <li>
@@ -63,7 +78,13 @@ const Sidebar = () => {
                       className="block py-2 px-6 text-md text-[#555555]-700 hover:bg-[#96bf01] hover:text-[#fdfcf7] hover:rounded-md uppercase border-b-4"
                       to="/reservations"
                     >
-                      My Reservations
+                      <button
+                        className="uppercase"
+                        type="button"
+                        onClick={() => setShowSidebar(!showSidebar)}
+                      >
+                        My Reservations
+                      </button>
                     </Link>
                   </li>
                   <li>
@@ -71,7 +92,13 @@ const Sidebar = () => {
                       className="block py-2 px-6 text-md text-[#555555]-700 hover:bg-[#96bf01] hover:text-[#fdfcf7] hover:rounded-md uppercase border-b-4"
                       to="/addApartment"
                     >
-                      Add Apartment
+                      <button
+                        className="uppercase"
+                        type="button"
+                        onClick={() => setShowSidebar(!showSidebar)}
+                      >
+                        Add Apartment
+                      </button>
                     </Link>
                   </li>
                   <li>
@@ -79,7 +106,13 @@ const Sidebar = () => {
                       className="block py-2 px-6 text-md text-[#555555]-700 hover:bg-[#96bf01] hover:text-[#fdfcf7] hover:rounded-md uppercase border-b-4"
                       to="/deleteApartment"
                     >
-                      Delete Apartment
+                      <button
+                        className="uppercase"
+                        type="button"
+                        onClick={() => setShowSidebar(!showSidebar)}
+                      >
+                        Delete Apartment
+                      </button>
                     </Link>
                   </li>
                   <li>
@@ -87,7 +120,13 @@ const Sidebar = () => {
                       className="block py-2 px-6 text-md text-[#555555]-700 hover:bg-[#96bf01] hover:text-[#fdfcf7] hover:rounded-md uppercase border-b-4"
                       to="/rentals"
                     >
-                      For Rent
+                      <button
+                        className="uppercase"
+                        type="button"
+                        onClick={() => setShowSidebar(!showSidebar)}
+                      >
+                        For Rent
+                      </button>
                     </Link>
                   </li>
                   <li>
@@ -95,7 +134,13 @@ const Sidebar = () => {
                       className="block py-2 px-6 text-md text-[#555555]-700 hover:bg-[#96bf01] hover:text-[#fdfcf7] hover:rounded-md uppercase border-b-4"
                       to="/markets"
                     >
-                      For Sale
+                      <button
+                        className="uppercase"
+                        type="button"
+                        onClick={() => setShowSidebar(!showSidebar)}
+                      >
+                        For sale
+                      </button>
                     </Link>
                   </li>
                   <li>
@@ -103,7 +148,13 @@ const Sidebar = () => {
                       className="block py-2 px-6 text-md text-[#555555]-700 hover:bg-[#96bf01] hover:text-[#fdfcf7] hover:rounded-md uppercase border-b-4"
                       to="/"
                     >
-                      <button className="uppercase" type="button" onClick={() => signUserOut()}>Log out</button>
+                      <button
+                        className="uppercase"
+                        type="button"
+                        onClick={() => signUserOut()}
+                      >
+                        Log out
+                      </button>
                     </Link>
                   </li>
                 </ul>
