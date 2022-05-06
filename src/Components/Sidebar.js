@@ -1,11 +1,16 @@
 import { useState } from 'react';
-import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { logUserOut } from '../Redux/Login/Login';
 import logo from '../Assets/logo.jpeg';
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
-
+  const dispatch = useDispatch();
+  const signUserOut = () => {
+    dispatch(logUserOut());
+  };
   return (
     <>
       <div className="flex flex-col items-center justify-center">
@@ -98,7 +103,7 @@ const Sidebar = () => {
                       className="block py-2 px-6 text-md text-[#555555]-700 hover:bg-[#96bf01] hover:text-[#fdfcf7] hover:rounded-md uppercase border-b-4"
                       to="/"
                     >
-                      Log out
+                      <button className="uppercase" type="button" onClick={() => signUserOut()}>Log out</button>
                     </Link>
                   </li>
                 </ul>
