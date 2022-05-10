@@ -24,7 +24,7 @@ export const removeApartment = (id) => async (dispatch) => {
   try {
     dispatch(removeApartmentFromList(id));
     await getData
-      .delete('id', id)
+      .delete('apartments', id)
       .then((response) => dispatch({ type: REMOVE_APARTMENT_SUCCESS, response }));
   } catch (error) {
     dispatch({ type: REMOVE_APARTMENT_FAILURE, error });
