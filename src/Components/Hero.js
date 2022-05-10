@@ -88,6 +88,40 @@ const HeroContent = styled.div`
     }
 `;
 
+const Arrow = styled(IoIosArrowRoundForward)`
+  font-size: 2rem;
+  margin-left: 10px;
+  `;
+
+const SliderButtons = styled.div`
+  position: absolute;
+  bottom: 50px;
+  display: flex;
+  right: 50px;
+  z-index: 10;
+`;
+
+const arrowButtons = css`
+  width: 50px;
+  height: 50px;
+  color: white;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+  padding: 10px;
+  margin-right: 1rem;
+  user-select: none;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: scale(1.05);
+  }
+`;
+
+const PrevArrow = styled(IoArrowBack)`
+  ${arrowButtons}
+  `;
+const NextArrow = styled(IoArrowForward)`  ${arrowButtons}`;
 
 const Hero = ({ slides }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
