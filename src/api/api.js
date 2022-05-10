@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { ApartmentsFetched } from '../redux/Apartments/Apartments';
+import { apartmentsFetched } from '../Redux/Apartments/Apartments';
 
-const fetchData = axios.create({
+export const fetchData = axios.create({
   baseURL: 'http://localhost:3000/',
   headers: { 'Content-Type': 'application/json' },
 });
@@ -9,13 +9,17 @@ const fetchData = axios.create({
 export const getApartments = () => async (dispatch) => {
   axios.get('http://localhost:3000/api/v1/apartments')
     .then((response) => {
-      const newapartment = response.data;
-      const mappedApartments = Object.entries(newapartment).map(([apartment_id, apartment]) => {
-        const { apartment_name, description } = apartment;
-        return { apartment_id, apartment_name, description };
+      const newApartment = response.data;
+      const mappedApartments = Object.entries(newApartment).map(([id, apartment]) => {
+        const { name, description } = apartment;
+        return {
+          id,
+          name,
+          description,
+          front: apartment.images.front,
+          price: apartment.price,
+        };
       });
-      dispatch(ApartmentsFetched(mappedApartments));
+      dispatch(apartmentsFetched(mappedApartments));
     });
 };
-
-export default fetchData;
