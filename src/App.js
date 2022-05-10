@@ -4,6 +4,7 @@ import LoginForm from './Components/LoginForm';
 import SignupFrom from './Components/SignupFrom';
 import Sidebar from './Components/Sidebar';
 import Hero from './Components/Hero';
+import DetailsPage from './Components/DetailsPage';
 import GlobalStyle from './globalStyles';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Sidebar />
         <Routes>
           <Route element={<Hero />} path="/apartments" />
+          <Route element={<DetailsPage />} path="/apartments/:id" />
           <Route element={<Home />} path="/">
             <Route element={<LoginForm />} path="/Login" />
             <Route element={<SignupFrom />} path="/Register" />
