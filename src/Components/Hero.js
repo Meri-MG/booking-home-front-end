@@ -1,9 +1,10 @@
-/* eslint react/prop-types: 0 */
+import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useRef, useEffect } from 'react';
 import styled, { css } from 'styled-components/macro';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import { IoArrowForward, IoArrowBack } from 'react-icons/io5';
 import Button from './Button';
+import { getApartments } from '../api/api';
 
 const HeroSection = styled.section`
   height: 100vh;
@@ -65,7 +66,9 @@ const HeroImage = styled.img`
 `;
 
 const HeroContent = styled.div`
-    position: relative;
+    position: absolute;
+    top: 23%;
+    left: 23%;
     z-index: 3;
     display: flex;
     flex-direction: column;
@@ -123,19 +126,30 @@ const PrevArrow = styled(IoArrowBack)`
   `;
 const NextArrow = styled(IoArrowForward)`  ${arrowButtons}`;
 
-const Hero = ({ slides }) => {
+const Hero = () => {
+  const apartments = useSelector((state) => state.Apartments.apartments);
+  const dispatch = useDispatch();
   const [currentSlide, setCurrentSlide] = useState(0);
-  const { length } = slides;
+  const { length } = apartments;
   const timeout = useRef(null);
 
   useEffect(() => {
-    // const nextSlide = () => {
-    //   setCurrentSlide(currentSlide === length - 1 ? 0 : currentSlide + 1);
-    // };
-  //   timeout.current = setTimeout(nextSlide, 3000);
-  //   return () => clearTimeout(timeout.current);
-  // }, [currentSlide, length]);
-  });
+    async function displayApartments() {
+      if (Object.values(apartments).length > 0) {
+        return apartments;
+      }
+      dispatch(getApartments());
+      return apartments;
+    }
+
+    displayApartments();
+
+    const nextSlide = () => {
+      setCurrentSlide(currentSlide === length - 1 ? 0 : currentSlide + 1);
+    };
+    timeout.current = setTimeout(nextSlide, 3000);
+    return () => clearTimeout(timeout.current);
+  }, [dispatch], [currentSlide, length]);
 
   const nextSlide = () => {
     setCurrentSlide(currentSlide === length - 1 ? 0 : currentSlide + 1);
@@ -147,26 +161,30 @@ const Hero = ({ slides }) => {
     return () => clearTimeout(timeout.current);
   };
 
-  if (!Array.isArray(slides) || slides.length <= 0) return null;
+  if (!Array.isArray(apartments) || apartments.length <= 0) return null;
 
   return (
     <HeroSection>
       <HeroWrapper>
-        {slides.map((slide, index) => (
+        {apartments.map((slide, index) => (
           <HeroSlide key={slide.id}>
             {index === currentSlide && (
             <HeroSlider>
-              <HeroImage src={slide.image} alt={slide.alt} />
+              <HeroImage src={slide.front} alt="House Image" />
               <HeroContent>
-                <h1>{slide.title}</h1>
-                <p>{slide.price}</p>
+                <h1>{slide.name}</h1>
+                <p>
+                  <span>Market/Rental Price: $ </span>
+                  {slide.price}
+                </p>
                 <Button
-                  to={slide.path}
+                  to={`/apartments/${slide.id}`}
                   primary="true"
                   css={`max-width: 140px;
+                  max-height: 40px;
                   color: white;`}
                 >
-                  {slide.label}
+                  View Details
                   <Arrow />
                 </Button>
               </HeroContent>
