@@ -4,11 +4,13 @@ import thunk from 'redux-thunk';
 import loginReducer from './Login/Login';
 import registerReducer from './Register/Register';
 import apartmentsReducer from './Apartments/Apartments';
+import apartmentsDetailsReducer from './Details/Detail';
 
 const reducers = combineReducers({
   LogIn: loginReducer,
   Register: registerReducer,
   Apartments: apartmentsReducer,
+  Details: apartmentsDetailsReducer,
 });
 
 const middlewares = [thunk, logger];
