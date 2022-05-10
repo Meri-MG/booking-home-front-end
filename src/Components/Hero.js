@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import styled, { css } from 'styled-components/macro';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import { IoArrowForward, IoArrowBack } from 'react-icons/io5';
+import { getApartmentDetails } from '../Redux/Details/Details';
 import Button from './Button';
 import { getApartments } from '../api/api';
 
@@ -66,35 +67,35 @@ const HeroImage = styled.img`
 `;
 
 const HeroContent = styled.div`
-    position: absolute;
-    top: 23%;
-    left: 23%;
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    max-width: 1600px;
-    width: calc(100% - 100px);
-    color: white;
+  position: absolute;
+  top: 23%;
+  left: 23%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  max-width: 1600px;
+  width: calc(100% - 100px);
+  color: white;
 
-    h1 {
-      font-size: clamp(1rem, 8vw, 2rem);
-      font-weight: 400;
-      text-transform: uppercase;
-      text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
-      text-align: left;
-      margin-bottom: 0.8rem;
-    } 
+  h1 {
+    font-size: clamp(1rem, 8vw, 2rem);
+    font-weight: 400;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+    text-align: left;
+    margin-bottom: 0.8rem;
+  }
 
-    p {
-      margin-bottom: 1.2rem;
-      text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
-    }
+  p {
+    margin-bottom: 1.2rem;
+    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+  }
 `;
 
 const Arrow = styled(IoIosArrowRoundForward)`
   font-size: 2rem;
   margin-left: 10px;
-  `;
+`;
 
 const SliderButtons = styled.div`
   position: absolute;
@@ -123,8 +124,10 @@ const arrowButtons = css`
 
 const PrevArrow = styled(IoArrowBack)`
   ${arrowButtons}
-  `;
-const NextArrow = styled(IoArrowForward)`  ${arrowButtons}`;
+`;
+const NextArrow = styled(IoArrowForward)`
+  ${arrowButtons}
+`;
 
 const Hero = () => {
   const apartments = useSelector((state) => state.Apartments.apartments);
@@ -132,24 +135,32 @@ const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const { length } = apartments;
   const timeout = useRef(null);
+  const showDetailsPage = (id) => {
+    dispatch(getApartmentDetails(id)).then(() => {
+    });
+  };
 
-  useEffect(() => {
-    async function displayApartments() {
-      if (Object.values(apartments).length > 0) {
+  useEffect(
+    () => {
+      async function displayApartments() {
+        if (Object.values(apartments).length > 0) {
+          return apartments;
+        }
+        dispatch(getApartments());
         return apartments;
       }
-      dispatch(getApartments());
-      return apartments;
-    }
 
-    displayApartments();
+      displayApartments();
 
-    const nextSlide = () => {
-      setCurrentSlide(currentSlide === length - 1 ? 0 : currentSlide + 1);
-    };
-    timeout.current = setTimeout(nextSlide, 3000);
-    return () => clearTimeout(timeout.current);
-  }, [dispatch], [currentSlide, length]);
+      // const nextSlide = () => {
+      //   setCurrentSlide(currentSlide === length - 1 ? 0 : currentSlide + 1);
+      // };
+      // timeout.current = setTimeout(nextSlide, 3000);
+      // return () => clearTimeout(timeout.current);
+    },
+    [dispatch],
+    // [currentSlide, length],
+  );
 
   const nextSlide = () => {
     setCurrentSlide(currentSlide === length - 1 ? 0 : currentSlide + 1);
@@ -169,26 +180,31 @@ const Hero = () => {
         {apartments.map((slide, index) => (
           <HeroSlide key={slide.id}>
             {index === currentSlide && (
-            <HeroSlider>
-              <HeroImage src={slide.front} alt="House Image" />
-              <HeroContent>
-                <h1>{slide.name}</h1>
-                <p>
-                  <span>Market/Rental Price: $ </span>
-                  {slide.price}
-                </p>
-                <Button
-                  to={`/apartments/${slide.id}`}
-                  primary="true"
-                  css={`max-width: 140px;
-                  max-height: 40px;
-                  color: white;`}
-                >
-                  View Details
-                  <Arrow />
-                </Button>
-              </HeroContent>
-            </HeroSlider>
+              <HeroSlider>
+                <HeroImage src={slide.front} alt="House Image" />
+                <HeroContent>
+                  <h1>{slide.name}</h1>
+                  <p>
+                    <span>Market/Rental Price: $ </span>
+                    {slide.price}
+                  </p>
+                  <Button
+                    to={`/apartments/${slide.apartment}`}
+                    primary="true"
+                    css={`
+                      max-width: 140px;
+                      max-height: 40px;
+                      color: white;
+                    `}
+                    onClick={() => {
+                      showDetailsPage(slide.apartment);
+                    }}
+                  >
+                    View Details
+                    <Arrow />
+                  </Button>
+                </HeroContent>
+              </HeroSlider>
             )}
           </HeroSlide>
         ))}

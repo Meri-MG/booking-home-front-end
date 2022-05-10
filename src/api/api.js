@@ -19,6 +19,7 @@ export const getApartments = () => async (dispatch) => {
         const { name, description } = apartment;
         return {
           id,
+          apartment: apartment.id,
           name,
           description,
           front: apartment.images.front,
