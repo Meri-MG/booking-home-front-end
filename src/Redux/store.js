@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import loginReducer from './Login/Login';
 import registerReducer from './Register/Register';
 import apartmentsReducer from './Apartments/Apartments';
-import apartmentsDetailsReducer from './Details/Detail';
+import apartmentsDetailsReducer from './Details/Details';
 
 const reducers = combineReducers({
   LogIn: loginReducer,
