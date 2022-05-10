@@ -5,6 +5,7 @@ import SignupFrom from './Components/SignupFrom';
 import Sidebar from './Components/Sidebar';
 import Hero from './Components/Hero';
 import GlobalStyle from './globalStyles';
+import DeleteApartment from './Components/DeleteApartment';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Sidebar />
         <Routes>
           <Route element={<Hero />} path="/apartments" />
+          <Route element={<DeleteApartment />} path="/deleteApartment" />
           <Route element={<Home />} path="/">
             <Route element={<LoginForm />} path="/Login" />
             <Route element={<SignupFrom />} path="/Register" />
