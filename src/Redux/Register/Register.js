@@ -1,4 +1,4 @@
-import fetchData from '../../api/api';
+import { fetchData } from '../../api/api';
 import { isLoggedIn } from '../Login/Login';
 
 const initialState = {

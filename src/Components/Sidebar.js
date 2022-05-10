@@ -36,7 +36,7 @@ const Sidebar = () => {
         )}
 
         <div
-          className={`top-0 left-0 w-80 bg-[#fdfcf7] p-10 pl-10 px-5 fixed transition-ease-in-out ease-in-out duration-300 z-30 ${
+          className={`h-screen top-0 left-0 w-80 bg-[#fdfcf7] p-10 pl-10 px-5 fixed transition-ease-in-out ease-in-out duration-300 z-30 ${
             showSidebar ? 'translate-x-0 ' : '-translate-x-full'
           }`}
         >
@@ -161,11 +161,11 @@ const Sidebar = () => {
               </div>
             </div>
           </nav>
-          <div className="footer">
+          <div className="footer fixed inset-x-0 bottom-0 p-4">
             <div className="py-8 px-6 md:flex md:items-center md:justify-between ">
               <span className="text-sm text-[#555555] sm:text-center">
                 © 2022
-                <a href="https://www.microverse.org">Microverse™</a>
+                <a href="https://www.microverse.org"> Microverse™</a>
                 . All Rights
                 Reserved.
               </span>
