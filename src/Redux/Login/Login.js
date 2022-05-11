@@ -5,6 +5,7 @@ const initialState = {
   user: {},
   errors: null,
   status: '',
+  loading: true,
 };
 
 export const LOGIN_SUCCESS = 'BOOKING_HOME/LOGIN_SUCCESS';
@@ -58,6 +59,7 @@ const loginReducer = (state = initialState, action) => {
         ...state,
         user: action.data.user,
         IsLogged_in: action.data.logged_in,
+        loading: false,
       };
     case LOGOUT_SUCCESS:
       return { ...state, IsLogged_in: action.data.logged_in };

@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { logUserIn } from '../Redux/Login/Login';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const navigateTo = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const status = useSelector((state) => state.LogIn.status);
+  const { status, IsLogged_in } = useSelector((state) => state.LogIn);
+  if (status === 'created' || IsLogged_in)navigateTo('/');
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
