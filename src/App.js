@@ -6,6 +6,7 @@ import Sidebar from './Components/Sidebar';
 import Hero from './Components/Hero';
 import DetailsPage from './Components/DetailsPage';
 import GlobalStyle from './globalStyles';
+import DeleteApartment from './Components/DeleteApartment';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Sidebar />
         <Routes>
           <Route element={<Hero />} path="/apartments" />
+          <Route element={<DeleteApartment />} path="/deleteApartment" />
           <Route element={<DetailsPage />} path="/apartments/:id" />
           <Route element={<Home />} path="/">
             <Route element={<LoginForm />} path="/Login" />

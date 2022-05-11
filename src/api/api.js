@@ -2,7 +2,12 @@ import axios from 'axios';
 import { apartmentsFetched } from '../Redux/Apartments/Apartments';
 
 export const fetchData = axios.create({
-  baseURL: 'http://localhost:3000/',
+  baseURL: 'https://booking-home-api.herokuapp.com/',
+  headers: { 'Content-Type': 'application/json' },
+});
+
+export const getData = axios.create({
+  baseURL: 'https://booking-home-api.herokuapp.com/api/v1/',
   headers: { 'Content-Type': 'application/json' },
 });
 
