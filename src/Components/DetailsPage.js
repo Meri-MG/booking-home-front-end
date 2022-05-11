@@ -7,11 +7,10 @@ const DetailsPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const apartment = useSelector((state) => state.Details);
+
   const {
     name, description, location, price, period,
   } = apartment;
-  const { front, back, interior } = apartment.images;
-  console.log(apartment, 'apartment');
 
   useEffect(() => {
     dispatch(getApartmentDetails(id));
@@ -25,7 +24,7 @@ const DetailsPage = () => {
         <div className="w-full mx-auto flex flex-col justify-center align-center my-8 lg:flex-row md:justify-between">
           <div className="w-80 mx-auto md:w-1/2 md:shrink-0 flex justify-center align-center">
             <img
-              src={front}
+              src={apartment?.images?.front}
               alt=""
               className="w-full h-80 md:h-full p-1 bg-white border rounded max-w-sm transition-shadow ease-in-out duration-300 shadow-none hover:shadow-2xl cursor-pointer"
             />
@@ -51,20 +50,12 @@ const DetailsPage = () => {
               <span className="font-bold">Total Fee/Month: $</span>
               {price * period}
             </p>
-            <div className="flex">
-              <button
-                type="button"
-                className="w-40 bg-[#96bf01] text-[#fdfcf7] border-2 border-transparent hover:bg-[#fdfcf7] hover:text-[#96bf01] hover:border-2 hover:border-[#96bf01] transition-color ease-in-out text-sm px-3 rounded uppercase"
-              >
-                Book an apartment
-              </button>
-              <button
-                type="button"
-                className="w-40 bg-[#fdfcf7] text-[#8B0000] border-2 border-[#8B0000] hover:bg-[#8B0000] hover:text-[#fdfcf7] hover:border-2 hover:border-[#8B0000] transition-color ease-in-out ml-3 text-sm px-3 rounded uppercase"
-              >
-                Remove an apartment
-              </button>
-            </div>
+            <button
+              type="button"
+              className="w-80 bg-[#96bf01] text-[#fdfcf7] border-2 border-transparent hover:bg-[#fdfcf7] hover:text-[#96bf01] hover:border-2 hover:border-[#96bf01] transition-color ease-in-out text-sm px-3 py-3 rounded uppercase"
+            >
+              Book an apartment
+            </button>
           </div>
         </div>
         <div>
@@ -76,21 +67,21 @@ const DetailsPage = () => {
           <div className="w-80 lg:96 mx-auto md:shrink-0 mb-8">
             <img
               className="w-full h-64 p-1 bg-white border rounded max-w-sm transition-shadow ease-in-out duration-300 shadow-none hover:shadow-2xl cursor-pointer"
-              src={back}
+              src={apartment?.images?.back}
               alt="interior 1"
             />
           </div>
           <div className="w-80 mx-auto md:shrink-0 mb-8 lg:pl-2">
             <img
               className="w-full h-64 p-1 bg-white border rounded max-w-sm transition-shadow ease-in-out duration-300 shadow-none hover:shadow-2xl cursor-pointer"
-              src={interior}
+              src={apartment?.images?.interior}
               alt="interior 2"
             />
           </div>
           <div className="w-80 mx-auto md:shrink-0 lg:pl-2">
             <img
               className="w-full h-64 p-1 bg-white border rounded max-w-sm transition-shadow ease-in-out duration-300 shadow-none hover:shadow-2xl cursor-pointer"
-              src={front}
+              src={apartment?.images?.front}
               alt="interior 3"
             />
           </div>
