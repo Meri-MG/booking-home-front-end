@@ -1,4 +1,6 @@
 import { Route, Routes } from 'react-router';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import Home from './Components/Home';
 import LoginForm from './Components/LoginForm';
 import SignupFrom from './Components/SignupFrom';
@@ -7,20 +9,35 @@ import Hero from './Components/Hero';
 import DetailsPage from './Components/DetailsPage';
 import GlobalStyle from './globalStyles';
 import DeleteApartment from './Components/DeleteApartment';
+import ProtectedRoutes from './Components/ProtectedRoutes';
+import { isLoggedIn } from './Redux/Login/Login';
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(isLoggedIn());
+  }, []);
+
   return (
     <div className="App">
       <>
         <GlobalStyle />
-        <Sidebar />
         <Routes>
-          <Route element={<Hero />} path="/apartments" />
-          <Route element={<DeleteApartment />} path="/deleteApartment" />
-          <Route element={<DetailsPage />} path="/apartments/:id" />
-          <Route element={<Home />} path="/">
+          <Route element={<Home />}>
             <Route element={<LoginForm />} path="/Login" />
             <Route element={<SignupFrom />} path="/Register" />
+          </Route>
+          <Route
+            element={(
+              <>
+                <Sidebar />
+                <ProtectedRoutes />
+              </>
+            )}
+          >
+            <Route element={<Hero />} path="/" />
+            <Route element={<DeleteApartment />} path="/deleteApartment" />
+            <Route element={<DetailsPage />} path="/apartments/:id" />
           </Route>
         </Routes>
       </>
