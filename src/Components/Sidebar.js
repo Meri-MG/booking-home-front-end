@@ -62,7 +62,7 @@ const Sidebar = () => {
                   <li>
                     <Link
                       className="block py-2 px-6 text-md text-[#555555]-700 hover:bg-[#96bf01] hover:text-[#fdfcf7] hover:rounded-md uppercase border-b-4"
-                      to="/"
+                      to="/apartments"
                     >
                       <button
                         className="uppercase"
