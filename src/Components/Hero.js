@@ -5,7 +5,7 @@ import { IoIosArrowRoundForward } from 'react-icons/io';
 import { IoArrowForward, IoArrowBack } from 'react-icons/io5';
 import { getApartmentDetails } from '../Redux/Details/Details';
 import Button from './Button';
-import { getApartments } from '../api/api';
+import { getApartments } from '../Redux/Apartments/Apartments';
 
 const HeroSection = styled.section`
   height: 100vh;
@@ -140,27 +140,31 @@ const Hero = () => {
     });
   };
 
-  useEffect(
-    () => {
-      async function displayApartments() {
-        if (Object.values(apartments).length > 0) {
-          return apartments;
-        }
-        dispatch(getApartments());
-        return apartments;
-      }
+  // useEffect(
+  //   () => {
+  //     async function displayApartments() {
+  //       if (Object.values(apartments).length > 0) {
+  //         return apartments;
+  //       }
+  //       dispatch(getApartments());
+  //       return apartments;
+  //     }
 
-      displayApartments();
+  //     displayApartments();
 
-      // const nextSlide = () => {
-      //   setCurrentSlide(currentSlide === length - 1 ? 0 : currentSlide + 1);
-      // };
-      // timeout.current = setTimeout(nextSlide, 3000);
-      // return () => clearTimeout(timeout.current);
-    },
-    [dispatch],
-    // [currentSlide, length],
-  );
+  //     // const nextSlide = () => {
+  //     //   setCurrentSlide(currentSlide === length - 1 ? 0 : currentSlide + 1);
+  //     // };
+  //     // timeout.current = setTimeout(nextSlide, 3000);
+  //     // return () => clearTimeout(timeout.current);
+  //   },
+  //   [dispatch],
+  //   // [currentSlide, length],
+  // );
+
+  useEffect(() => {
+    dispatch(getApartments());
+  }, []);
 
   const nextSlide = () => {
     setCurrentSlide(currentSlide === length - 1 ? 0 : currentSlide + 1);
