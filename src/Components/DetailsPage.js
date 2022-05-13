@@ -11,7 +11,7 @@ const DetailsPage = () => {
   const user = useSelector((state) => state.LogIn.user);
 
   const {
-    name, description, location, price, period, reserved,
+    name, description, location, price, period,
   } = apartment;
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const DetailsPage = () => {
             </p>
             <p className="mb-3">
               <span className="font-bold">Available From: </span>
-              { reserved }
+              2022-09-28
             </p>
             <p className="mb-3">
               <span className="font-bold">Monthly Rent: $</span>

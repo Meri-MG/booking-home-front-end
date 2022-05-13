@@ -50,21 +50,17 @@
 - [GitHub](https://github.com/Meri-MG)
 - [LinkedIn](https://www.linkedin.com/in/meri-gogichashvili/)
 
+:man: **Sam Mong'are**
+- [GitHub](https://github.com/Mosams)
+- [LinkedIn](https://www.linkedin.com/in/samwel-mongare/)
+
 :man: **Yassine Omari**
 - [GitHub](https://github.com/youmari)
 - [LinkedIn](https://www.linkedin.com/in/youmari/)
 
-:man: **OLATUNJI AZEEM ADEBAYO**
-- [GitHub](https://github.com/zemola)
-- [LinkedIn](https://www.linkedin.com/in/olatunjiazeem/)
-
 :man: **Mohamed ElShamy**
 - [GitHub](https://github.com/mohamedelshamy55?fbclid=IwAR1fNoNPIEahycm9QBJ_PbWpS7HaIKIWisu14zcPIrqg7PnzE-mVuaWVL4E)
 - [LinkedIn](https://www.linkedin.com/in/mohamedelshamy85/)
-
-:man: **Sam Mong'are**
-- [GitHub](https://github.com/Mosams)
-- [LinkedIn](https://www.linkedin.com/in/samwel-mongare/)
 
 ## 🤝 Contributing
 - Contributions, issues, and feature requests are welcome!
@@ -74,4 +70,5 @@
 Give a ⭐ if you like this project!
 
 # Acknowledgments
-Thanks to our teammates, learning and coding partners.
+- Thanks to [Murat Korkmaz](https://www.behance.net/muratk) for his design inspiration [Behance](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign).
+- Thanks to our learning and coding partners.
