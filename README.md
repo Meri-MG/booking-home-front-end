@@ -1,7 +1,11 @@
 
 # Booking Home
-> 
-![ERD](https://user-images.githubusercontent.com/39459774/165515738-8936af27-ca45-476e-be02-8575542d5b75.png)
+> Booking home is a website where users can view available apartments for rent and reserve for their convenience and taste.
+
+> ![mainPage](https://github.com/Meri-MG/booking-home-front-end/blob/develop/src/Assets/img3.png)
+> ![mainPage](https://github.com/Meri-MG/booking-home-front-end/blob/develop/src/Assets/img1.png)
+> ![DetailsPage](https://github.com/Meri-MG/booking-home-front-end/blob/develop/src/Assets/img2.png)
+
 
 ## Built With
 
