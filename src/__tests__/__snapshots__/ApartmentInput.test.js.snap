@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders add apartments page correctly 1`] = `
+<div
+  className="mt-20 mx-8"
+>
+  <h2
+    className="text-[#1F99DD] text-center font-bold w-full max-w-lg m-auto"
+  >
+    ADD NEW APARTMENT
+  </h2>
+  <form
+    className="w-full max-w-lg m-auto py-10 mt-10 px-10 border rounded"
+  >
+    <input
+      className="border-solid border-gray-300 border my-2 py-2 px-4 w-full rounded text-gray-700 focus:ring-[#1F99DD] focus:border-[#1F99DD] outline-0"
+      name="name"
+      onChange={[Function]}
+      placeholder="Enter Name"
+      required={true}
+      type="text"
+      value=""
+    />
+    <input
+      className="border-solid border-gray-300 border my-2 py-2 px-4 w-full rounded text-gray-700 focus:ring-[#1F99DD] focus:border-[#1F99DD] outline-0"
+      name="description"
+      onChange={[Function]}
+      placeholder="Enter Description"
+      required={true}
+      type="textarea"
+      value=""
+    />
+    <input
+      className="border-solid border-gray-300 border my-2 py-2 px-4 w-full rounded text-gray-700 focus:ring-[#1F99DD] focus:border-[#1F99DD] outline-0"
+      name="location"
+      onChange={[Function]}
+      placeholder="Enter Location"
+      required={true}
+      type="text"
+      value=""
+    />
+    <input
+      className="border-solid border-gray-300 border my-2 py-2 px-4 w-full rounded text-gray-700 focus:ring-[#1F99DD] focus:border-[#1F99DD] outline-0"
+      name="image1"
+      onChange={[Function]}
+      placeholder="Image url front"
+      required={true}
+      type="text"
+      value=""
+    />
+    <input
+      className="border-solid border-gray-300 border my-2 py-2 px-4 w-full rounded text-gray-700 focus:ring-[#1F99DD] focus:border-[#1F99DD] outline-0"
+      name="image2"
+      onChange={[Function]}
+      placeholder="Image url back"
+      required={true}
+      type="text"
+      value=""
+    />
+    <input
+      className="border-solid border-gray-300 border my-2 py-2 px-4 w-full rounded text-gray-700 focus:ring-[#1F99DD] focus:border-[#1F99DD] outline-0"
+      name="image3"
+      onChange={[Function]}
+      placeholder="Image url interior"
+      required={true}
+      type="text"
+      value=""
+    />
+    <input
+      className="border-solid border-gray-300 border my-2 py-2 px-4 w-full rounded text-gray-700 focus:ring-[#1F99DD] focus:border-[#1F99DD] outline-0"
+      name="rentalPrice"
+      onChange={[Function]}
+      placeholder="Enter Rental Price"
+      required={true}
+      type="number"
+    />
+    <input
+      className="border-solid border-gray-300 border my-2 py-2 px-4 w-full rounded text-gray-700 focus:ring-[#1F99DD] focus:border-[#1F99DD] outline-0"
+      name="housePrice"
+      onChange={[Function]}
+      placeholder="Enter House Price"
+      required={true}
+      type="number"
+    />
+    <input
+      className="border-solid border-gray-300 border my-2 py-2 px-4 w-full rounded text-gray-700 focus:ring-[#1F99DD] focus:border-[#1F99DD] outline-0"
+      name="period"
+      onChange={[Function]}
+      placeholder="Enter Period of stay"
+      required={true}
+      type="number"
+    />
+    <button
+      className="mt-4 w-full border shadow py-3 px-6 font-semibold text-md rounded bg-[#96bf01] text-[#fdfcf7] border-2 border-transparent hover:bg-[#fdfcf7] hover:text-[#96bf01] hover:border-2 hover:border-[#96bf01] transition-color ease-in-out uppercase"
+      onClick={[Function]}
+      type="button"
+    >
+      Add an Apartment
+    </button>
+  </form>
+</div>
+`;
