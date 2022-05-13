@@ -2,19 +2,36 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getApartmentDetails } from '../Redux/Details/Details';
+import { reserveApartment } from '../Redux/Apartments/Apartments';
 
 const DetailsPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const apartment = useSelector((state) => state.Details);
+  const user = useSelector((state) => state.LogIn.user);
 
   const {
-    name, description, location, price, period,
+    name, description, location, price, period, reserved,
   } = apartment;
 
   useEffect(() => {
     dispatch(getApartmentDetails(id));
   }, []);
+
+  const onClick = ((e) => {
+    const user_id = user.id;
+    const apartment_id = id;
+    if (e.target.value === 'reserve') {
+      const favourite = true;
+      dispatch(reserveApartment({ user_id, favourite, apartment_id }));
+      dispatch(getApartmentDetails(id));
+    } else if (e.target.value === 'unreserve') {
+      const favourite = false;
+      dispatch(reserveApartment({ user_id, favourite, apartment_id }));
+      dispatch(getApartmentDetails(id));
+    }
+  });
+
   return (
     <>
       <div
@@ -40,7 +57,7 @@ const DetailsPage = () => {
             </p>
             <p className="mb-3">
               <span className="font-bold">Available From: </span>
-              2022-09-28
+              { reserved }
             </p>
             <p className="mb-3">
               <span className="font-bold">Monthly Rent: $</span>
@@ -50,12 +67,27 @@ const DetailsPage = () => {
               <span className="font-bold">Total Fee/Month: $</span>
               {price * period}
             </p>
-            <button
-              type="button"
-              className="w-80 bg-[#96bf01] text-[#fdfcf7] border-2 border-transparent hover:bg-[#fdfcf7] hover:text-[#96bf01] hover:border-2 hover:border-[#96bf01] transition-color ease-in-out text-sm px-3 py-3 rounded uppercase"
-            >
-              Book an apartment
-            </button>
+            {apartment?.reserved === true
+              ? (
+                <button
+                  type="button"
+                  value="unreserve"
+                  onClick={onClick}
+                  className="w-80 bg-red-500 text-[#fdfcf7] border-2 border-transparent hover:bg-[#fdfcf7] hover:text-red-500 hover:border-2 hover:border-red-500 transition-color ease-in-out text-sm px-3 py-3 rounded uppercase"
+                >
+                  Remove from Reserved
+                </button>
+              )
+              : (
+                <button
+                  type="button"
+                  value="reserve"
+                  onClick={onClick}
+                  className="w-80 bg-[#96bf01] text-[#fdfcf7] border-2 border-transparent hover:bg-[#fdfcf7] hover:text-[#96bf01] hover:border-2 hover:border-[#96bf01] transition-color ease-in-out text-sm px-3 py-3 rounded uppercase"
+                >
+                  Reserve an apartment
+                </button>
+              )}
           </div>
         </div>
         <div>
