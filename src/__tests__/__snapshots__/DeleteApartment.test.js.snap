@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders delete apartments page correctly 1`] = `
+<div
+  className="h-full min-h-screen bg-main-color bg-cover flex flex-col"
+>
+  <h2
+    className="text-3xl text-white text-center font-semibold p-9"
+  >
+    Delete Apartments
+  </h2>
+</div>
+`;
