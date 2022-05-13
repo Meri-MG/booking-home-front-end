@@ -11,6 +11,8 @@ import GlobalStyle from './globalStyles';
 import DeleteApartment from './Components/DeleteApartment';
 import ProtectedRoutes from './Components/ProtectedRoutes';
 import { isLoggedIn } from './Redux/Login/Login';
+import ApartmentInput from './Components/ApartmentInput';
+import MyReservations from './Components/MyReservations';
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +40,8 @@ function App() {
             <Route element={<Hero />} path="/" />
             <Route element={<DeleteApartment />} path="/deleteApartment" />
             <Route element={<DetailsPage />} path="/apartments/:id" />
+            <Route element={<ApartmentInput />} path="/addApartment" />
+            <Route element={<MyReservations />} path="/reservations" />
           </Route>
         </Routes>
       </>

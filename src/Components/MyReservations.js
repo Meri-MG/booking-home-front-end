@@ -14,7 +14,7 @@ const MyReservations = () => {
   if (!Array.isArray(apartments) || apartments.length <= 0) return null;
 
   return (
-    <section className="px-4 py-4 bg-gray-200 lg:px-32 lg:py-20 h-screen">
+    <section className="px-4 py-4 bg-gray-200 lg:py-20 h-screen">
       <div className="">
         <h1 className="text-2xl font-bold text-center text-blue-600 lg:text-4xl">Reserved Apartments</h1>
         <div className="flex justify-center">
