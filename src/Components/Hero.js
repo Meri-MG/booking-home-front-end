@@ -140,28 +140,6 @@ const Hero = () => {
     });
   };
 
-  // useEffect(
-  //   () => {
-  //     async function displayApartments() {
-  //       if (Object.values(apartments).length > 0) {
-  //         return apartments;
-  //       }
-  //       dispatch(getApartments());
-  //       return apartments;
-  //     }
-
-  //     displayApartments();
-
-  //     // const nextSlide = () => {
-  //     //   setCurrentSlide(currentSlide === length - 1 ? 0 : currentSlide + 1);
-  //     // };
-  //     // timeout.current = setTimeout(nextSlide, 3000);
-  //     // return () => clearTimeout(timeout.current);
-  //   },
-  //   [dispatch],
-  //   // [currentSlide, length],
-  // );
-
   useEffect(() => {
     dispatch(getApartments());
   }, []);

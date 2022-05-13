@@ -14,8 +14,6 @@ const ApartmentInput = () => {
   const [period, setPeriod] = useState();
 
   const dispatch = useDispatch();
-  // const data = useSelector((state) => state.Apartments.apartments);
-  // console.log(data, 'this is state');
   const user = useSelector((state) => state.LogIn.user);
   const submitApartmentToStore = (e) => {
     e.preventDefault();
