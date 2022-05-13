@@ -27,7 +27,7 @@ const SignupFrom = () => {
   return (
     <div className="flex w-1/2 justify-center items-center bg-white">
       <form onSubmit={handleOnSubmit} className="bg-white">
-        {status === 'created' && navigate('/welcome')}
+        {status === 'created' && navigate('/')}
         <h1 className="text-gray-800 font-bold text-2xl mb-1">Hello There</h1>
         <p className="text-sm font-normal text-gray-600 mb-7">
           Let&#39;s create an account for you !
