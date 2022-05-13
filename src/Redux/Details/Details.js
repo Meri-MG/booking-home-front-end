@@ -1,6 +1,7 @@
 import { fetchData } from '../../api/api';
 
 const APARTMENT_DETAILS = 'BOOKING_HOME/APARTMENT_DETAILS';
+const FETCH_APARTMENT_FAILURE = 'BOOKING_HOME/FETCH_APARTMENT_FAILURE';
 
 const initialState = [];
 
@@ -16,7 +17,7 @@ export const getApartmentDetails = (id) => async (dispatch) => {
       dispatch(fetchApartmentDetails(newApartment));
     });
   } catch (error) {
-    console.log(error);
+    dispatch({ type: FETCH_APARTMENT_FAILURE, error });
   }
 };
 
